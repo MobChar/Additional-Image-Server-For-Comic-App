@@ -19,6 +19,7 @@ async function setUpRabbit() {
                 fs.writeFile(__dirname+'/uploadImage/' + data.fileName, Buffer.from(data.fileBuffer), (err) => {
                     if (console.error()) console.log(err);
                 });
+                console.log(__dirname+'/uploadImage/' + data.fileName);
                 console.log('Received image');
 
                 var sqlServerData = {
