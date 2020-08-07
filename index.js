@@ -11,7 +11,6 @@ app.use(function (err, req, res, next) {
 // app.use(express.urlencoded({extended: true}));
 
 app.get('/image/:fileName', function (req, res) {
-    console.log(__dirname + '/uploadImage/' + fileName);
     var fileName = req.params.fileName;
     var readStream = fs.createReadStream(__dirname + '/uploadImage/' + fileName);
     readStream.on('open', function () {
