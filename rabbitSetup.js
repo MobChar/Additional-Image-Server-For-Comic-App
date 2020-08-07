@@ -16,9 +16,10 @@ async function setUpRabbit() {
 
             rabbitChannel.consume('image-server-new-image', function (payload) {
                 let data = JSON.parse(payload.content);
-                fs.writeFile('./uploadImage/' + data.fileName, Buffer.from(data.fileBuffer), (err) => {
+                fs.writeFile(__dirname+'/uploadImage/' + data.fileName, Buffer.from(data.fileBuffer), (err) => {
                     if (console.error()) console.log(err);
                 });
+                console.log('Received image');
 
                 var sqlServerData = {
                     fileName: data.fileName,
