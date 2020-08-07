@@ -16,6 +16,9 @@ async function setUpRabbit() {
 
             rabbitChannel.consume('image-server-new-image', function (payload) {
                 let data = JSON.parse(payload.content);
+                if (!fs.existsSync(__dirname+'/uploadImage/')){
+                    fs.mkdirSync(__dirname+'/uploadImage/');
+                }
                 fs.writeFile(__dirname+'/uploadImage/' + data.fileName, Buffer.from(data.fileBuffer),{ flag: 'w' }, (err) => {
                     if (err) console.log(err);
                 });
