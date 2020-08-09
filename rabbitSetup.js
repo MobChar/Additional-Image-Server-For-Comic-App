@@ -25,7 +25,7 @@ async function setUpRabbit() {
 
                 var sqlServerData = {
                     fileName: data.fileName,
-                    comicId: data.comicId,
+                    chapterId: data.chapterId,
                     serverId: serverId
                 }
                 rabbitChannel.sendToQueue('sql-server-new-image', Buffer.from(JSON.stringify(sqlServerData)));
